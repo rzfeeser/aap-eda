@@ -7,7 +7,7 @@
   
   rules:
     - name: launch_job_on_webhook
-      condition: event is defined
+      condition: event.payload.command == "restart"
       action:
         run_job_template:
           name: "EDA-student01"
