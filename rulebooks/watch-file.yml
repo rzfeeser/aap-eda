@@ -1,0 +1,17 @@
+---
+- name: Watch a directory for new files
+  hosts: localhost
+  sources:
+    - ansible.eda.watchdog:
+        path: /tmp/eda-watch
+        recursive: false
+        patterns:
+          - "*.signal"
+  rules:
+    - name: when a .signal file is created
+      condition: event.type == "created"
+      action:
+        run_playbook:
+          name: playbooks/notify.yml
+          extra_vars:
+            rule: "file_created"
