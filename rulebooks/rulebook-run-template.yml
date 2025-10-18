@@ -1,5 +1,4 @@
 - name: a simple rulebook
-  hosts: all
   sources:
     - ansible.eda.webhook:
         host: 0.0.0.0
