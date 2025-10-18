@@ -1,6 +1,6 @@
 ---
 - name: Handle EDA event - Incoming Webhook
-  hosts: localhost
+  hosts: all
   gather_facts: false
   vars:
     incoming: "{{ ansible_eda.event | default({}) }}"
