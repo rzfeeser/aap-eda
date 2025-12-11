@@ -19,7 +19,7 @@
         run_playbook:                # Specifies that a playbook should be executed when this rule matches
           name: playbooks/notify.yml # Path to the playbook to run
           extra_vars:
-            rule: "restart_handler"  # Passes a variable into the playbook for context
+            trigger_reason: "restart_handler"  # Passes a variable into the playbook for context
 
     - name: act on any message (fallback)  # Second rule: handles all other defined messages
       condition: event.payload.message is defined
@@ -28,4 +28,4 @@
         run_playbook:
           name: playbooks/notify.yml # Runs the same playbook as above
           extra_vars:
-            rule: "generic_handler"  # Passes a different variable to identify this as a generic event
+            trigger_reason: "generic_handler"  # Passes a different variable to identify this as a generic event
